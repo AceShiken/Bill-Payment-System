@@ -7,8 +7,8 @@ spring:
       host:localhost
       port:27017
       database:bps
-      repositories:
-        enabled: true
+#      repositories:
+#        enabled: true
 server:
   port: 8095
 http:
