@@ -1,0 +1,37 @@
+We at Setu believe that to build a solution, you must experience the problem first hand. As one
+of Setu’s products caters to an ecosystem of billers, we expect you to be a biller first before
+you can be a part of Setu.
+Using this test we want to check your abilities to:
+1. Code and build an API system
+2. Host the API system
+3. Understand API documentation
+4. Use postman to test the APIs
+5. Understand software systems and the web
+Build a Setu compatible bill payment system
+Your bill system should maintain a small DB of customers and their bills. Then expose 2 APIs
+to be able to do the following:
+1. Allow for a fetching a bill
+2. Allow payment update against a bill and fetch receipt
+The biller system APIs need to be consumable by a UPI app like PhonePe. This guide explains
+how you can build the said APIs: https://hackmd.io/@ranjth-setu/r1rVE0Y28
+Submission guidelines
+1. Host your biller APIs at a URL so that we can access it and test it
+2. Submit the following 5 items over email:
+a. Link to the public github/gitlab repository for the source code of your biller
+system
+b. URL of your API
+c. API key
+d. At least 5 sets of sample test data for the bill fetch API
+e. Working postman collection which we can import and test your APIs
+Evaluation guide
+Steps:
+1. Fetch bill: We will query your system to fetch a bill for a given customer identifier.
+2. Update Payment: We will call your update-payment API and post information about a
+payment.
+3. Fetch bill: We will fetch a bill with the same customer identifier. The expectation is that
+the payment is reflected in your system.
+4. Update payment would be called multiple times to check if the API is idempotent.
+Criteria:
+1. Proper error handling, error codes and messages.
+2. Follow the docs word to word. Any deviation from the required spec will result in
+disqualification.

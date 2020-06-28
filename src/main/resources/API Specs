@@ -1,0 +1,88 @@
+API specs
+Security
+The API should require an API key in the X-API-KEY http header.
+
+Error response
+In case of an error API should send the following error response
+
+{
+    "status": "ERROR",
+    "errorCode": "customer-not-found"
+}
+Following error codes are defined
+
+Error code	HTTP Status Code
+auth-error	403
+invalid-api-parameters	400
+customer-not-found	404
+invalid-ref-id	404
+amount-mismatch	400
+path-not-found	404
+unhandled-error	500
+As mentioned above, HTTP status code for error responses should be non 200 codes as defined against each error code above.
+
+Success responses
+All success responses should have a HTTP status code as 200
+Fetch Bill
+URL: https://example.com/api/v1/fetch-bill
+HTTP method: POST
+
+Request
+In the request we will send over customer’s mobile number
+
+{
+    "mobileNumber": "9898000012"
+}
+Response
+API is expected to respond with the name of the customer, due Date, due amount and a reference ID.
+
+{
+    "status": "SUCCESS",
+    "data": {
+
+        "customerName": "Ashok Kumar",
+        "dueAmount": "2000",
+        "dueDate": "2020-06-05",
+        "refID": "AX0812878"
+    }
+}
+This reference ID would be used in the second API to inform about the payment made by the customer.
+
+In case error send the appropriate error response in the format described previously.
+
+auth-error
+invalid-api-parameters
+customer-not-found
+Bill Payment Update
+URL: https://example.com/api/v1/payment-update
+HTTP method: POST
+
+Request
+Request will consist of the ref ID from the previous API and transaction related information.
+
+{
+    "refID": "AX0812878"
+    "transaction": {
+        "amountPaid": "2000",
+        "date": "2020-06-05",
+        "id": "OUAB012344"
+    }
+
+}
+Response
+{
+    "status": "SUCCESS",
+    "data": {
+        "ackID": "AX091283"
+    }
+}
+Note that this API is expected to be idempotent. If we send you the same payload, you need to respond with the same response. Multiple identical requests have the same effect as making a single request. This API might be retried in case of network errors and you need to make sure you are not treating it as a duplicate transaction if you see the same transaction ID and ref ID.
+
+Also note that refID is for one time use only. If you see two transactionIDs against the same refID, you should reject the request with invalid-ref-id error response.
+
+In case error send the appropriate error response in the format described previously.
+
+auth-error
+invalid-api-parameters
+invalid-ref-id
+amount-mismatch

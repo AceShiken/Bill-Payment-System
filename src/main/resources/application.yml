@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Bill Payment System
+# Mongo Config
+  data:
+    mongodb:
+      host:localhost
+      port:27017
+      database:bps
+      repositories:
+        enabled: true
+server:
+  port: 8095
+http:
+  auth:
+    tokenValue: WGBV0Lp0fZlHLBGx
+    tokenHeader: X-API-KEY
