@@ -47,6 +47,8 @@ public class BillService {
 
             BillData billData = new BillData(customerAgainstBill.getName(), billByContact.getDueAmount(), billByContact.getDueDate(), billByContact.getRefID());
             return new FetchBillResponse(ApiStatus.SUCCESS, billData);
+        } catch (CustomerNotFoundException e) {
+            throw new CustomerNotFoundException("customer-not-found");
         } catch (Exception e) {
             throw new UnhandledErrorException("unhandled-error");
         }
@@ -71,6 +73,10 @@ public class BillService {
             billByRefID.setRefID(transaction.getId());
             bill.save(billByRefID);
             return new UpdatePaymentResponse(ApiStatus.SUCCESS, new PaymentData(transaction.getId()));
+        } catch (InvalidRefIdException e) {
+            throw new InvalidRefIdException("invalid-ref-id");
+        } catch (AmountMismatchException e) {
+            throw new AmountMismatchException("amount-mismatch");
         } catch (Exception e) {
             throw new UnhandledErrorException("unhandled-error");
         }
