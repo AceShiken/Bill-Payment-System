@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "148cdf4e-ccb8-48f4-a9ca-599f8757e9c8",
+		"name": "Setu Sample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8095/api/v1/fetch-bill?mobileNumber=9843275201",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "WGBV0Lp0fZlHLBGx",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mobileNumber\": \"9843745201\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8095/api/v1/fetch-bill?mobileNumber=9843275201",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"api",
+						"v1",
+						"fetch-bill"
+					],
+					"query": [
+						{
+							"key": "mobileNumber",
+							"value": "9843275201"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8095/api/v1/getAllCustomers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "WGBV0Lp0fZlHLBGx",
+						"type": "text"
+					},
+					{
+						"key": "X-API-KEY",
+						"value": "WGBV0Lp0fZlHLBGx",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8095/api/v1/getAllCustomers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"api",
+						"v1",
+						"getAllCustomers"
+					],
+					"query": [
+						{
+							"key": "X-API-KEY",
+							"value": "WGBV0Lp0fZlHLBGx",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8095/api/v1/payment-update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "WGBV0Lp0fZlHLBGx",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refID\": \"TQEIG57JO\",\r\n    \"transaction\": {\r\n        \"amountPaid\": 3000,\r\n        \"date\": \"2020-06-28T21:55:11.864+00:00\",\r\n        \"id\": \"OUAB012344\"\r\n    }\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8095/api/v1/payment-update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"api",
+						"v1",
+						"payment-update"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
